@@ -81,7 +81,7 @@ function reset() {
     displayMinutes.innerHTML = minutes;
     displaySeconds.innerHTML = seconds;
     isFirstClick = true;
-    newDeck();
+    shuffle(cards);
     //initGame();
 }
 
@@ -93,14 +93,14 @@ function resetCards(){
   }
 }
 
-function newDeck(){
-  deck = document.querySelector('.deck');
-  cardHTML = shuffle(cards).map(function(card){
-    return generateCard(card);
-  });
-  //deck.innerHTML = cardHTML.join('');
-  resetCards();
-}
+// function newDeck(){
+//   deck = document.querySelector('.deck');
+//   cardHTML = shuffle(cards).map(function(card){
+//     return generateCard(card);
+//   });
+//   //deck.innerHTML = cardHTML.join('');
+//   resetCards();
+// }
 
 //game timer function
  function startTimer() {
