@@ -55,17 +55,18 @@ let displayMinutes = document.querySelector('.minutes');  //minutes section of H
 let displaySeconds = document.querySelector('.seconds'); //seconds section of HTML stopwatch
 let milliseconds = 0; //variable for elapsed milliseconds
 let matched = 0; //variable to track matched cards to evaluate if game has been won
-const winningPairs = 1; //need 8 pairs to win the gameStopwatch
+const winningPairs = 1; //need 8 pairs to win the game
 const modal = document.querySelector('.modal'); //selects modal window
 const yesButton = document.querySelector('.play-again'); //selects the yes button
 const noButton = document.querySelector('.no-play-again'); //selects the no button
 let isFirstClick = true; // First Click Indicator
 
 restartGame.addEventListener('click', function(e) {  //event listener for restart game button
+  stopTimer();
 //clear classes from cards
-allCards.forEach(function(card){
-  card.classList.remove('open', 'show', 'match');
-   });
+  allCards.forEach(function(card){
+    card.classList.remove('open', 'show', 'match');
+     });
    reset();
   // initGame();
 });
@@ -74,18 +75,31 @@ function reset() {
     moves = 0;
     minutes = 0;
     seconds = 0;
+    milliseconds = 0;
+    matched = 0;
     movesCounter.innerText = moves;
     displayMinutes.innerHTML = minutes;
     displaySeconds.innerHTML = seconds;
-    stopTimer();
-    initGame();
+    isFirstClick = true;
+    newDeck();
+    //initGame();
 }
+
 
 function resetCards(){
   const cards = document.querySelectorAll('.deck li')
   for (let card of cards){
     card.className = 'card';
   }
+}
+
+function newDeck(){
+  deck = document.querySelector('.deck');
+  cardHTML = shuffle(cards).map(function(card){
+    return generateCard(card);
+  });
+  //deck.innerHTML = cardHTML.join('');
+  resetCards();
 }
 
 //game timer function
@@ -211,7 +225,6 @@ function finalStats() {
 //event listener for play again button
 yesButton.addEventListener('click', function(e) {
   modal.style.display = 'none';
-  initGame();
   console.log('Reinitiate game');
   reset();
   resetCards();
