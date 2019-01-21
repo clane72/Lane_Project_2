@@ -19,16 +19,16 @@ var cards = ['fa-diamond', 'fa-diamond',
      return generateCard(card);
    });
    deck.innerHTML = cardHTML.join('');
-   resetCards();
+  //resetCards();
  }
 //
-initGame();
 
 //function that generates the cards using temporal literals
 function generateCard(card){
   return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 }
 
+initGame();
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -60,6 +60,9 @@ const modal = document.querySelector('.modal'); //selects modal window
 const yesButton = document.querySelector('.play-again'); //selects the yes button
 const noButton = document.querySelector('.no-play-again'); //selects the no button
 let isFirstClick = true; // First Click Indicator
+const three = document.querySelector('.three');
+const two = document.querySelector('.two');
+const one = document.querySelector('.one');
 
 restartGame.addEventListener('click', function(e) {  //event listener for restart game button
   stopTimer();
@@ -81,12 +84,18 @@ function reset() {
     displayMinutes.innerHTML = minutes;
     displaySeconds.innerHTML = seconds;
     isFirstClick = true;
+    three.style.display =""; //Reset Stars
+    two.style.display =""; //Reset Stars
+    one.style.display =""; //Reset Stars
+    resetCards();
     shuffle(cards);
+    generateCard(cards);
     //initGame();
 }
 
 
 function resetCards(){
+
   const cards = document.querySelectorAll('.deck li')
   for (let card of cards){
     card.className = 'card';
@@ -129,9 +138,7 @@ function resetCards(){
 
 //function to check how many moves have been made & change star rating
 function starRating() {
-  const three = document.querySelector('.three');
-  const two = document.querySelector('.two');
-  const one = document.querySelector('.one');
+
   if (moves === 10) {
     three.style.display = 'none';
     console.log('moves = 10');
@@ -173,7 +180,7 @@ allCards.forEach(function(card){
          //Check to see if all matched
          if (matched === winningPairs){
            console.log ("You win!");
-           moves +=1;
+           //moves +=1;
            finalStats();
            stopTimer();
          }
