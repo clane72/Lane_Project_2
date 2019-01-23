@@ -130,7 +130,8 @@ h1 {
 
 /*Modal Content/Box*/
 .modal-content {
-  background-color: #cef1ff;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  /*background-color: #d1bcf4;*/
   text-align: center;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
