@@ -19,9 +19,7 @@ var cards = ['fa-diamond', 'fa-diamond',
      return generateCard(card);
    });
    deck.innerHTML = cardHTML.join('');
-  //resetCards();
  }
-//
 
 //function that generates the cards using temporal literals
 function generateCard(card){
@@ -30,6 +28,11 @@ function generateCard(card){
 
 initGame();
 // Shuffle function from http://stackoverflow.com/a/2450976
+
+function refreshClick() {
+  location.reload();
+}
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -55,7 +58,7 @@ let displayMinutes = document.querySelector('.minutes');  //minutes section of H
 let displaySeconds = document.querySelector('.seconds'); //seconds section of HTML stopwatch
 let milliseconds = 0; //variable for elapsed milliseconds
 let matched = 0; //variable to track matched cards to evaluate if game has been won
-const winningPairs = 1; //need 8 pairs to win the game
+const winningPairs = 8; //need 8 pairs to win the game
 const modal = document.querySelector('.modal'); //selects modal window
 const yesButton = document.querySelector('.play-again'); //selects the yes button
 const noButton = document.querySelector('.no-play-again'); //selects the no button
@@ -70,8 +73,9 @@ restartGame.addEventListener('click', function(e) {  //event listener for restar
   allCards.forEach(function(card){
     card.classList.remove('open', 'show', 'match');
      });
-   reset();
-  // initGame();
+     refreshClick();
+   //reset(); - tried this did not work - would not shuffle
+  // initGame(); - tried this did not work - cards no longer clickable - why?
 });
 
 function reset() {
@@ -88,9 +92,8 @@ function reset() {
     two.style.display =""; //Reset Stars
     one.style.display =""; //Reset Stars
     resetCards();
-    shuffle(cards);
-    generateCard(cards);
-    //initGame();
+    shuffle();
+    //initGame(); - tried this did not work - cards no longer clickable - why?
 }
 
 
@@ -101,7 +104,7 @@ function resetCards(){
     card.className = 'card';
   }
 }
-
+//***tried this function too to reset/shuffle but didn't work either - froze the cards***//
 // function newDeck(){
 //   deck = document.querySelector('.deck');
 //   cardHTML = shuffle(cards).map(function(card){
@@ -135,7 +138,6 @@ function resetCards(){
    clearInterval(interval);
 }
 
-
 //function to check how many moves have been made & change star rating
 function starRating() {
 
@@ -156,7 +158,7 @@ allCards.forEach(function(card){
    //check to see if first click then start timer
    if(isFirstClick) {
        startTimer();
-       isFirstClick = false; // Change our First Click indicator's value
+       isFirstClick = false; // change FirstClick indicator's value
      }
 
    if(card.classList.contains('open') || !card.classList.contains('show') || !card.classList.contains('match')){
@@ -202,6 +204,7 @@ allCards.forEach(function(card){
  });
 });
 
+// get stats for results
 function finalStats() {
   const officialTime = document.querySelector('.official-time');
   const officialMoves = document.querySelector('.official-moves');
@@ -233,8 +236,8 @@ function finalStats() {
 yesButton.addEventListener('click', function(e) {
   modal.style.display = 'none';
   console.log('Reinitiate game');
-  reset();
   resetCards();
+  refreshClick();
 });
 
 
