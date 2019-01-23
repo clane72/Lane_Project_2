@@ -1,4 +1,7 @@
-# Memory Game Project
+# Memory Game Project - Cynthia Lane, Udacity Student
+
+Game: https://clane72.github.io/
+* Matching Game! Click the cards to find a match. Match all 16 cards as fast as you can!
 
 ## Table of Contents
 
@@ -6,6 +9,7 @@
 * [Contributing](#contributing)
 
 ## Instructions
+
 
 The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
