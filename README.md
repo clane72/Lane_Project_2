@@ -31,8 +31,7 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 
 ## Dependancies
-font-awesome [stylesheet prefetch](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css)
-
-font-Coda [stylesheet prefetch](https://fonts.googleapis.com/css?family=Coda)
+- font-awesome [stylesheet prefetch](https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css)
+- font-Coda [stylesheet prefetch](https://fonts.googleapis.com/css?family=Coda)
 
 
