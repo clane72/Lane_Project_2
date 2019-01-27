@@ -1,7 +1,12 @@
 # Memory Game Project - Cynthia Lane, Udacity Student
 
-Game: https://clane72.github.io/
-* Matching Game! Click the cards to find a match. Match all 16 cards as fast as you can!
+## How to Play?
+- Open the [Live Preview](https://clane72.github.io/)
+- Click on any card and you will see an image
+- Click on one of the other cards to find the image's match
+- When you find the right one, both of them will stay flipped
+- If you didn't find it, both of them will be invisible again
+- Match all 16 cards as fast as you can!
 
 ## Table of Contents
 
